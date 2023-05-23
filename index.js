@@ -1,4 +1,4 @@
-import * as mod from "/sha512.min.js";
+import * as mod from "./sha512.min.js";
 
 function makepss() {
   var text = sha512(document.getElementById("psw").value + document.getElementById("usr").value );
