@@ -1,20 +1,18 @@
 <html>
   <head>
   <title>Passworst Js</title>
+  <script src="/index.js" type="module"></script>
   </head>
   <body>
     <h3>Username:</h3>
-    <br>
-    <textarea id="usr"></textarea>
-    <br>
+    <input id="usr" autocapitalize="off"></textarea>
     <h3>Password:</h3>
-    <br>
-    <textarea id="psw"></textarea>
-    <br>
-    <button onclick="makepss()">Get password</button>
-    <br>
+    <input id="psw" autocapitalize="off"></textarea>
+    <br><br>
+    <button id="makepsbtn">Get password</button>
+    <br><br>
+    <button id="copybtn">Copy</button>
     <h3>Your password is></h3>
-    <br>
     <p id="pswd">Empty</p>
     </body>
   </html>
