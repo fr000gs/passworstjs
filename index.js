@@ -1,6 +1,6 @@
 /*
 Copyright fr000gs
-Licensed under GNU AGPL
+Licensed under GNU AGPL 3.0
 Made for my personal use
 */
 import * as mod from "./sha512.min.js";
