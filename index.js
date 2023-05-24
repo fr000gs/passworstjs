@@ -1,15 +1,17 @@
+/*
+Copyright fr000gs
+Licensed under GNU AGPL
+Made for my personal use
+*/
 import * as mod from "./sha512.min.js";
-//import {AES} from "./aes.js";
 import { fromByteArray, toByteArray, byteLength }
 from "./b64.js";
-
 import { ECB } from "./ecb.js";
 
 var encoder = new TextEncoder();
 var decoder = new TextDecoder();
 
 function aesecbenc(text, key) {
-  //var key = encoder.encode("Example128BitKey");
   // Convert text to bytes
   //var text = 'TextMustBe16Byte';
   var textBytes = encoder.encode(text);
@@ -32,7 +34,8 @@ function aesecbdec(encryptedBytes, key) {
 
 function longtext(text) {
   var chunksize = 6;
-  var texts = text.match(/[\s\S]{1,16}/g) || [' '];
+  var texts =
+    text.match(/[\s\S]{1,16}/g) || [' '];
   var poop = texts.pop();
   texts.push(poop.padEnd(16));
   return texts;
@@ -108,7 +111,8 @@ document.getElementById("copyoutput")
 /////////////////////////////////
 
 function makepss() {
-  var text = sha512(document.getElementById("psw").value + document.getElementById("usr").value);
+  var text = sha512(document.getElementById("psw").value +
+    document.getElementById("usr").value);
   var value = '';
   for (var i = 0; i < text.length; i++) {
     if (i % 8 == 0) {
