@@ -4,19 +4,20 @@
 <head>
   <title>Passworst Js</title>
   <script src="index.js" type="module"></script>
-  <style>
+  <link rel="stylesheet" href="../index.css">
+  <!--<style>
     html {
       font-size: 32;
       color: white;
       background-color: black;
     }
     
-    button {
+    .button_action {
       border-radius: 20px;
       color: white;
       background-color: olive;
     }
-  </style>
+  </style>-->
 </head>
 
 <body>
@@ -28,8 +29,8 @@
   <input id="psw" autocapitalize="off"
   type="password" onkeypress="handleKeyPress(event)"></input>
   <br><br>
-  <button id="makepsbtn">Get password</button>
-  <button id="copybtn">Copy</button>
+  <button class="button_action" id="makepsbtn">Get password</button>
+  <button class="button_action" id="copybtn">Copy</button>
   <h6>Your password is</h6>
   <p id="pswd">...</p>
   <br>
