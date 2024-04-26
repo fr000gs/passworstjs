@@ -5,23 +5,34 @@ Made for my personal use
 */
 import * as mod from "./sha512.min.js";
 
+const $pswd = document.getElementById("pswd");
+const $usr = document.getElementById("usr");
+const $psw = document.getElementById("psw")
+
+function handleKeyPress(e){
+ var key=e.keyCode || e.which;
+  if (key==13){
+     makepss();
+     copyPassword();
+  }
+}
+
 function makepss() {
-  var text = sha512(document.getElementById("psw").value +
-    document.getElementById("usr").value);
+  var text = sha512($psw.value + $usr.value);
   var value = '';
   for (var i = 0; i < text.length; i++) {
     if (i % 8 == 0) {
       value = value + text[i];
     }
   }
-  document.getElementById("pswd").innerHTML = value + "@A";
+  $pswd.innerHTML = value + "@A";
 }
 
 document.getElementById("makepsbtn")
   .addEventListener("click", makepss, false);
 
 function copyPassword() {
-  var copyText = document.getElementById("pswd").innerHTML;
+  var copyText = $pswd.innerHTML;
   navigator.clipboard.writeText(copyText);
 }
 
