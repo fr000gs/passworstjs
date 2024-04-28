@@ -7,8 +7,14 @@ import * as mod from "./sha512.min.js";
 
 const $pswd = document.getElementById("pswd");
 const $usr = document.getElementById("usr");
-const $psw = document.getElementById("psw")
+const $psw = document.getElementById("psw");
 
+function hanelkpress() {
+    makepss();
+    copyPassword();
+}
+
+/*
 function handleKeyPress(e){
  var key=e.keyCode || e.which;
   if (key==13){
@@ -16,6 +22,7 @@ function handleKeyPress(e){
      copyPassword();
   }
 }
+*/
 
 function makepss() {
   var text = sha512($psw.value + $usr.value);
@@ -38,3 +45,10 @@ function copyPassword() {
 
 document.getElementById("copybtn")
   .addEventListener("click", copyPassword, false);
+
+$psw.addEventListener("keydown", (event) => {
+  if (event.isComposing || event.keyCode === 229) {
+    return;
+  }
+  hanelkpress();
+});
