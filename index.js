@@ -14,7 +14,7 @@ function hanelkpress() {
     copyPassword();
 }
 
-/*
+
 function handleKeyPress(e){
  var key=e.keyCode || e.which;
   if (key==13){
@@ -22,7 +22,7 @@ function handleKeyPress(e){
      copyPassword();
   }
 }
-*/
+
 
 function makepss() {
   var text = sha512($psw.value + $usr.value);
@@ -50,5 +50,5 @@ $psw.addEventListener("keydown", (event) => {
   if (event.isComposing || event.keyCode === 229) {
     return;
   }
-  hanelkpress();
+  handleKeyPress(event);
 });
