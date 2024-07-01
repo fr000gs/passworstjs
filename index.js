@@ -9,6 +9,8 @@ const $pswd = document.getElementById("pswd");
 const $usr = document.getElementById("usr");
 const $psw = document.getElementById("psw");
 
+var confirm_password = false;
+
 function hanelkpress() {
     makepss();
     copyPassword();
@@ -23,6 +25,23 @@ function handleKeyPress(e){
   }
 }
 
+function showpsw(){
+  var x = document.getElementById("psw");
+  var y = document.getElementById("conf_psw");
+  if (x.type === "password") {
+    x.type = y.type = "text";
+  } else {
+    x.type = y.type = "password";
+  }
+} 
+
+function confirm_toggle(){
+  if (confirm_password === true) {
+    confirm_password = false;
+  } else {
+    confirm_password = true;
+  }
+}
 
 function makepss() {
   var text = sha512($psw.value + $usr.value);
