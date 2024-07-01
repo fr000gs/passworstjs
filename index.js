@@ -8,6 +8,7 @@ import * as mod from "./sha512.min.js";
 const $pswd = document.getElementById("pswd");
 const $usr = document.getElementById("usr");
 const $psw = document.getElementById("psw");
+const $show_psw = document.getElementById("show_psw");
 
 var confirm_password = false;
 
@@ -33,7 +34,8 @@ function showpsw(){
   } else {
     x.type = y.type = "password";
   }
-} 
+}
+$show_psw.onclick = showpsw;
 
 function confirm_toggle(){
   if (confirm_password === true) {
