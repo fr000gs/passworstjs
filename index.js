@@ -56,7 +56,7 @@ function check_confirm() {
 }
 
 function makepss() {
-  while (!check_confirm) {
+  while (!check_confirm()) {
     alert('confirm password')
   }
   var text = sha512($psw.value + $usr.value);
