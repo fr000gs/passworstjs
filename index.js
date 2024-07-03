@@ -9,14 +9,10 @@ const $pswd = document.getElementById("pswd");
 const $usr = document.getElementById("usr");
 const $psw = document.getElementById("psw");
 const $show_psw = document.getElementById("show_psw");
+const $conf_psw = document.getElementById("conf_psw");
+const $conf_psw_enable = document.getElementById("conf_psw_enable");
 
 var confirm_password = false;
-
-function hanelkpress() {
-    makepss();
-    copyPassword();
-}
-
 
 function handleKeyPress(e){
  var key=e.keyCode || e.which;
@@ -27,12 +23,10 @@ function handleKeyPress(e){
 }
 
 function showpsw(){
-  var x = document.getElementById("psw");
-  var y = document.getElementById("conf_psw");
-  if (x.type === "password") {
-    x.type = y.type = "text";
+  if ($psw.type === "password") {
+    $psw.type = $conf_psw.type = "text";
   } else {
-    x.type = y.type = "password";
+    $psw.type = $conf_psw.type = "password";
   }
 }
 $show_psw.onclick = showpsw;
@@ -45,7 +39,26 @@ function confirm_toggle(){
   }
 }
 
+$conf_psw_enable.onclick = confirm_toggle;
+
+function check_confirm() {
+  if (confirm_password) {
+    if ($conf_psw.value == $psw.value) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  else {
+    return true;
+  }
+}
+
 function makepss() {
+  while (!check_confirm) {
+    alert('confirm password')
+  }
   var text = sha512($psw.value + $usr.value);
   var value = '';
   for (var i = 0; i < text.length; i++) {
