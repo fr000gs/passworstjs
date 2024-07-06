@@ -1,89 +1,61 @@
 /*
 Copyright fr000gs
 Licensed under GNU AGPL 3.0
-Made for my personal use
+Intended for personal use
 */
-import * as mod from "./sha512.min.js";
+import * as sha512 from "./sha512.min.js";
 
-const $pswd = document.getElementById("pswd");
-const $usr = document.getElementById("usr");
-const $psw = document.getElementById("psw");
-const $show_psw = document.getElementById("show_psw");
-const $conf_psw = document.getElementById("conf_psw");
-const $conf_psw_enable = document.getElementById("conf_psw_enable");
+const $passwordOutput = document.getElementById("password-output");
+const $usernameInput = document.getElementById("username-input");
+const $passwordInput = document.getElementById("password-input");
+const $showPasswordCheckbox = document.getElementById("show-password-checkbox");
+const $confirmPasswordInput = document.getElementById("confirm-password-input");
+const $confirmPasswordCheckbox = document.getElementById("confirm-password-checkbox");
 
-var confirm_password = false;
+let isConfirmPasswordEnabled = false;
 
-function handleKeyPress(e){
- var key=e.keyCode || e.which;
-  if (key==13){
-     makepss();
-     copyPassword();
-  }
+function togglePasswordVisibility() {
+  const type = $passwordInput.type === "password" ? "text" : "password";
+  $passwordInput.type = $confirmPasswordInput.type = type;
 }
 
-function showpsw(){
-  if ($psw.type === "password") {
-    $psw.type = $conf_psw.type = "text";
-  } else {
-    $psw.type = $conf_psw.type = "password";
-  }
-}
-$show_psw.onclick = showpsw;
+$showPasswordCheckbox.onclick = togglePasswordVisibility;
 
-function confirm_toggle(){
-  if (confirm_password === true) {
-    confirm_password = false;
-  } else {
-    confirm_password = true;
-  }
+function toggleConfirmPassword() {
+  isConfirmPasswordEnabled = !isConfirmPasswordEnabled;
 }
 
-$conf_psw_enable.onclick = confirm_toggle;
+$confirmPasswordCheckbox.onclick = toggleConfirmPassword;
 
-function check_confirm() {
-  if (confirm_password === true) {
-    if ($conf_psw.value == $psw.value) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-  else {
-    return true;
-  }
+function isPasswordConfirmed() {
+  return !isConfirmPasswordEnabled || $confirmPasswordInput.value === $passwordInput.value;
 }
 
-function makepss() {
-  if (check_confirm() === false) {
-    alert('confirm password');
+function generatePassword() {
+  if (!isPasswordConfirmed()) {
+    alert('Please confirm your password.');
     return;
   }
-  var text = sha512($psw.value + $usr.value);
-  var value = '';
-  for (var i = 0; i < text.length; i++) {
-    if (i % 8 == 0) {
-      value = value + text[i];
-    }
+
+  const hashed = sha512($passwordInput.value + $usernameInput.value);
+  let generatedPassword = '';
+  for (let i = 0; i < hashed.length; i += 8) {
+    generatedPassword += hashed.charAt(i);
   }
-  $pswd.innerHTML = value + "@A";
+  $passwordOutput.innerHTML = generatedPassword + "@A";
 }
 
-document.getElementById("makepsbtn")
-  .addEventListener("click", makepss, false);
+document.getElementById("generate-password-btn").addEventListener("click", generatePassword);
 
 function copyPassword() {
-  var copyText = $pswd.innerHTML;
-  navigator.clipboard.writeText(copyText);
+  navigator.clipboard.writeText($passwordOutput.innerHTML);
 }
 
-document.getElementById("copybtn")
-  .addEventListener("click", copyPassword, false);
+document.getElementById("copy-password-btn").addEventListener("click", copyPassword);
 
-$psw.addEventListener("keydown", (event) => {
-  if (event.isComposing || event.keyCode === 229) {
-    return;
+$passwordInput.addEventListener("keydown", (event) => {
+  if (!event.isComposing && event.keyCode === 13) {
+    generatePassword();
+    copyPassword();
   }
-  handleKeyPress(event);
 });
