@@ -13,29 +13,29 @@
   <main>
     <h1>Passworst</h1>
     <form>
-      <label for="usr" class="h6">Username:</label>
-      <input id="usr" name="username" type="text" autocapitalize="off" aria-required="true">
+      <label for="username-input" class="h6">Username:</label>
+      <input id="username-input" name="username" type="text" autocapitalize="off" aria-required="true">
 
-      <label for="psw" class="h6">Password:</label>
-      <input id="psw" name="password" type="password" autocapitalize="off" aria-required="true">
+      <label for="password-input" class="h6">Password:</label>
+      <input id="password-input" name="password" type="password" autocapitalize="off" aria-required="true">
       
-      <input id="show_psw" type="checkbox">
-      <label for="show_psw">Show password</label>
+      <input id="password-output" type="checkbox">
+      <label for="password-output">Show password</label>
 
       <div id="span_conf_psw">
         <label for="conf_psw" class="h6">Confirm Password:</label>
-        <input id="conf_psw" name="confirm-password" type="password" autocapitalize="off">
+        <input id="confirm-paswsord-input" name="confirm-password" type="password" autocapitalize="off">
       </div>
       <input id="conf_psw_enable" type="checkbox">
-      <label for="conf_psw_enable">Confirm password</label>
+      <label for="confirm-password-checkbox">Confirm password</label>
 
       <div>
-        <button type="button" class="button_action" id="makepsbtn">Get password</button>
-        <button type="button" class="button_action" id="copybtn">Copy</button>
+        <button type="button" class="button_action" id="generate-password-btn">Get password</button>
+        <button type="button" class="button_action" id="copy-password-btn">Copy</button>
       </div>
 
       <div class="h6">Your password is:</div>
-      <div id="pswd">...</div>
+      <div id="password-output">...</div>
     </form>
   </main>
 </body>
