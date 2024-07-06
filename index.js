@@ -42,7 +42,7 @@ function confirm_toggle(){
 $conf_psw_enable.onclick = confirm_toggle;
 
 function check_confirm() {
-  if (confirm_password) {
+  if (confirm_password === true) {
     if ($conf_psw.value == $psw.value) {
       return true;
     }
@@ -56,8 +56,9 @@ function check_confirm() {
 }
 
 function makepss() {
-  while (!check_confirm()) {
-    alert('confirm password')
+  if (check_confirm() === false) {
+    alert('confirm password');
+    return;
   }
   var text = sha512($psw.value + $usr.value);
   var value = '';
