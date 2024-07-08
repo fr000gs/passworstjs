@@ -3,7 +3,7 @@ Copyright fr000gs
 Licensed under GNU AGPL 3.0
 Intended for personal use
 */
-import * as sha512 from "./sha512.min.js";
+import * as mod_sha512 from "./sha512.min.js";
 
 const $passwordOutput = document.getElementById("password-output");
 const $usernameInput = document.getElementById("username-input");
@@ -37,7 +37,7 @@ function generatePassword() {
     return;
   }
 
-  const hashed = sha512.sha512($passwordInput.value + $usernameInput.value);
+  const hashed = sha512($passwordInput.value + $usernameInput.value);
   let generatedPassword = '';
   for (let i = 0; i < hashed.length; i += 8) {
     generatedPassword += hashed.charAt(i);
