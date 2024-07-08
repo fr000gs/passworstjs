@@ -37,7 +37,7 @@ function generatePassword() {
     return;
   }
 
-  const hashed = sha512($passwordInput.value + $usernameInput.value);
+  const hashed = sha512.sha512($passwordInput.value + $usernameInput.value);
   let generatedPassword = '';
   for (let i = 0; i < hashed.length; i += 8) {
     generatedPassword += hashed.charAt(i);
