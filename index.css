@@ -1,0 +1,109 @@
+/* Reset some default browser styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+main {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Remove max-width to allow full width */
+  max-width: 66%;
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  display: flex; /* Make input group items flex */
+  align-items: center; /* Align items vertically */
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  flex: 1; /* Take up remaining space in flex container */
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+  flex: 2; /* Take up 2/3 of the space */
+  width: 100%;
+  padding: 12px 10px; /* Adjust padding */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input-group input[type="checkbox"] {
+  margin-left: 10px;
+  /*transform: scale(1.5); /* Increase checkbox size */*/
+}
+
+.button_action {
+  padding: 15px 20px; /* Adjust padding to reduce the height */
+  font-size: 16px; /* Keep font size consistent */
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 10px;
+  text-align: center; /* Center-align button text */
+}
+
+.button_action:hover {
+  background-color: #0056b3;
+}
+
+#password-output {
+  padding: 20px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  min-height: 80px; /* Ensure output area maintains a minimum height */
+}
+
+.h6 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .input-group {
+    flex-direction: column; /* Stack items vertically on small screens */
+  }
+
+  .input-group input[type="checkbox"] {
+    margin-left: 0; /* Remove left margin on checkboxes */
+    margin-top: 10px; /* Add top margin to checkboxes for spacing */
+    /*transform: scale(1.2); /* Adjust size for smaller screens */*/
+  }
+}
