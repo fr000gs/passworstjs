@@ -59,3 +59,10 @@ $passwordInput.addEventListener("keydown", (event) => {
     copyPassword();
   }
 });
+
+$usernameInput.addEventListener("keydown", (event) => {
+  if (!event.isComposing && event.keyCode === 13) {
+    generatePassword();
+    copyPassword();
+  }
+});

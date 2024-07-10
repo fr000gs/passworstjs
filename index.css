@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  /*font-family: Arial, sans-serif;*/
   line-height: 1.6;
   background-color: #f0f0f0;
   display: flex;
@@ -33,6 +33,7 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .input-group {
@@ -51,7 +52,8 @@ form {
 .input-group input[type="text"],
 .input-group input[type="password"] {
   flex: 2; /* Take up 2/3 of the space */
-  width: 100%;
+  font-family: monospace;
+  width: 90%;
   padding: 12px 10px; /* Adjust padding */
   font-size: 16px;
   border: 1px solid #ccc;
@@ -60,7 +62,8 @@ form {
 
 .input-group input[type="checkbox"] {
   margin-left: 10px;
-  /*transform: scale(1.5); /* Increase checkbox size */*/
+  transform: scale(1.5); /* Increase checkbox size */
+  margin: 0px 5px;
 }
 
 .button_action {
