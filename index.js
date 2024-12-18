@@ -5,7 +5,7 @@ Intended for personal use
 */
 import * as mod_sha512 from "./sha512.min.js";
 
-import * as bcrypt from './bcrypt.min.js';
+//import * as bcrypt from './bcrypt.min.js';
 const saltRounds = 10;
 
 const $passwordOutput = document.getElementById("password-output");
@@ -56,12 +56,12 @@ function generatePasswordSha() {
   $passwordOutput.innerHTML = generatedPassword + "@A";
 }
 
-function geenratePasswordBase64() {
+function generatePasswordBase64() {
   if (!isPasswordConfirmed()) {
     alert('Please confirm your password.');
     return;
   }
-
+  
   const hash = bcrypt.hashSync($usernameInput.value+$passwordInput.value, saltRounds);
   alert(hash);
 }
