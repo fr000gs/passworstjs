@@ -11,8 +11,10 @@ const $passwordInput = document.getElementById("password-input");
 const $showPasswordCheckbox = document.getElementById("show-password-checkbox");
 const $confirmPasswordInput = document.getElementById("confirm-password-input");
 const $confirmPasswordCheckbox = document.getElementById("confirm-password-checkbox");
+const $enableBase64Checkbox = document.getElementById("base64-enable-checkbox");
 
 let isConfirmPasswordEnabled = false;
+let isBase64Enabled = false;
 
 function togglePasswordVisibility() {
   const type = $passwordInput.type === "password" ? "text" : "password";
@@ -26,6 +28,12 @@ function toggleConfirmPassword() {
 }
 
 $confirmPasswordCheckbox.onclick = toggleConfirmPassword;
+
+function toggleBase64Enable () {
+  isBase64Enabled = !isBase64Enabled;
+}
+
+$enableBase64Checkbox.onclick = toggleBase64Enable;
 
 function isPasswordConfirmed() {
   return !isConfirmPasswordEnabled || $confirmPasswordInput.value === $passwordInput.value;
