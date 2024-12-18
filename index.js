@@ -5,7 +5,6 @@ Intended for personal use
 */
 import * as mod_sha512 from "./sha512.min.js";
 
-const bcrypt = require('bcrypt');
 import bcrypt from './bcript.min.js';
 const saltRounds = 10;
 
