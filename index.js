@@ -5,6 +5,9 @@ Intended for personal use
 */
 import * as mod_sha512 from "./sha512.min.js";
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 const $passwordOutput = document.getElementById("password-output");
 const $usernameInput = document.getElementById("username-input");
 const $passwordInput = document.getElementById("password-input");
@@ -39,7 +42,7 @@ function isPasswordConfirmed() {
   return !isConfirmPasswordEnabled || $confirmPasswordInput.value === $passwordInput.value;
 }
 
-function generatePassword() {
+function generatePasswordSha() {
   if (!isPasswordConfirmed()) {
     alert('Please confirm your password.');
     return;
@@ -51,6 +54,23 @@ function generatePassword() {
     generatedPassword += hashed.charAt(i);
   }
   $passwordOutput.innerHTML = generatedPassword + "@A";
+}
+
+function geenratePasswordBase64() {
+  if (!isPasswordConfirmed()) {
+    alert('Please confirm your password.');
+    return;
+  }
+
+  const hash = bcrypt.hashSync($usernameInput.value+$passwordInput.value, saltRounds);
+  alert(hash};
+}
+
+function generatePassword() {
+  if (isBase64Enabled) {
+    generatePasswordBase64()}
+  else {
+    generatePasswordSha()}
 }
 
 document.getElementById("generate-password-btn").addEventListener("click", generatePassword);
