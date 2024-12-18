@@ -63,7 +63,7 @@ function geenratePasswordBase64() {
   }
 
   const hash = bcrypt.hashSync($usernameInput.value+$passwordInput.value, saltRounds);
-  alert(hash};
+  alert(hash);
 }
 
 function generatePassword() {
