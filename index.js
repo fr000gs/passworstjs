@@ -5,7 +5,7 @@ Intended for personal use
 */
 import * as mod_sha512 from "./sha512.min.js";
 
-import * as bcrypt from './bcrypt.min.js';
+//import * as bcrypt from './bcrypt.min.js';
 const saltRounds = 10;
 
 const $passwordOutput = document.getElementById("password-output");
